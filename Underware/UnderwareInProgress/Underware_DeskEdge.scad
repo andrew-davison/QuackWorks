@@ -37,6 +37,8 @@ Offset_to_Multiboard = 5;
 Connector_channel_length = 2; 
 //Length (Z axis) in mm of the channel up the edge of the desk.
 Thickness_of_Desk = 40;
+//Offset caused by your Mounting method (in mm), default of 10mm assumes 7mm for Multiboard and 3mm for standard Threaded Snap Connectors.
+Mounting_Method_Offset = 10;
 //Slot for cable access (in mm)
 Cable_slot = 7;
 
@@ -119,7 +121,7 @@ if(Base_Top_or_Both != "Base")
         color_this(Global_Color)
             rot([180,-90,0])
             half_of(DOWN+RIGHT, s=Channel_Length_Units*Grid_Size*2)
-                path_sweep(completeProfile(widthMM = channelWidth, heightMM = Channel_Internal_Height), turtle(["xmove", (Thickness_of_Desk+actualHeight)*2]), anchor=TOP, orient=BOT);
+                path_sweep(completeProfile(widthMM = channelWidth, heightMM = Channel_Internal_Height), turtle(["xmove", (Thickness_of_Desk+actualHeight+Mounting_Method_Offset)*2]), anchor=TOP, orient=BOT);
 
         // Join piece
         color_this(Global_Color)
